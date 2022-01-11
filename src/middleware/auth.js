@@ -1,5 +1,5 @@
 const auth = (req, res, next) => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   if (isLoggedIn) {
     next();
   } else {
