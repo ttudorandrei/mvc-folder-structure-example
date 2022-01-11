@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const handlebars = require("express-handlebars");
 
 const logger = require("./middleware/logger");
 const routes = require("./routes");
@@ -8,6 +9,17 @@ const routes = require("./routes");
 const PORT = 3000;
 
 const app = express();
+
+// options that handlebars uses
+const handlebarsOptions = {};
+
+// creating a handlebars with our options
+const hbs = handlebars.create(handlebarsOptions);
+
+// using handlebars engine
+app.engine("handlebars", hbs.engine);
+app.set("views", path.join(__dirname, "/views"));
+app.set("view engine", "handlebars");
 
 app.use(cors());
 app.use(express.json({ extended: true }));

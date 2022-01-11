@@ -1,12 +1,14 @@
 const auth = (req, res, next) => {
-  const isLoggedIn = false;
+  // const isLoggedIn = true;
+
   if (isLoggedIn) {
     next();
   } else {
-    res.status(401).json({
-      error: "Oops! It looks like you're not authorised to access this page :(",
-    });
+    // res.redirect("/not-authorised");
+    res.json({ error: "You are not authorised to access this page" });
   }
 };
 
-module.exports = auth;
+const isLoggedIn = false;
+
+module.exports = { auth, isLoggedIn };
